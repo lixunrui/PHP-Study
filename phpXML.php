@@ -27,4 +27,6 @@ echo($test); // <- undefinded variable
 
 // nex test
 
+// this is a new test based on the GIT setup
+
 ?>
