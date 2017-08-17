@@ -25,4 +25,6 @@ print_r($xml);
 
 echo($test); // <- undefinded variable 
 
+// nex test
+
 ?>
