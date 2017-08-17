@@ -29,4 +29,6 @@ echo($test); // <- undefinded variable
 
 // this is a new test based on the GIT setup
 
+// now we add this file into a new branch
+
 ?>
