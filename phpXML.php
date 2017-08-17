@@ -17,7 +17,7 @@ $myXMLData =
     <from>Jani</from>
     <heading>Reminder</heading>
     <body>Don't forget me this weekend!</body>
-</note"; // < missing a angle bracket 
+</note"; // < missinga angle bracket 
 
 $xml=simplexml_load_string($myXMLData); //  <- this will report an error: 2            //or die("Error: Cannot create object");
 
@@ -28,5 +28,7 @@ echo($test); // <- undefinded variable
 // nex test
 
 // this is a new test based on the GIT setup
+
+// this is a new line added after commited to new branch,
 
 ?>
