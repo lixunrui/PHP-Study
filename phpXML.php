@@ -101,4 +101,15 @@ while($data = fread($fp, 8192))
 
 xml_parser_free($parser);
 
+// XML DOM 
+
+$xmlDoc = new DOMDocument();
+$xmlDoc->load("Books.xml");
+
+$x = $xmlDoc->documentElement;
+
+foreach($x->childNodes AS $item)
+{
+    print $item->nodeName."=".$item->nodeValue."<br>";
+}
 ?>
