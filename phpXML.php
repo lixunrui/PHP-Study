@@ -34,10 +34,71 @@ foreach($newXml->children() as $books)
     echo $books->title['lang'];
     echo "<br>";
 }
-// nex test
 
-// this is a new test based on the GIT setup
 
-// this is a new line added after commited to new branch,
+// XML Expat Parser Demo
+
+$parser = xml_parser_create();
+$currentAtt;
+
+function start($parser, $element_name, $element_atts)
+{
+    switch($element_name)
+    {
+        case "BOOK":
+            echo "--- Book for ".$element_atts['CATEGORY']."----";
+            break;
+        case "TITLE":
+            echo "Book Title is: ";
+            if(count($element_atts)>0)
+            {
+                $GLOBALS['currentAtt'] = $element_atts;
+            }
+            else
+            {
+                $currentAtt = null;
+            }
+            break;
+        case "AUTHOR":
+            echo "Author is: ";
+            break;
+        case "YEAR":
+            echo "Publish Year is: ";
+            break;
+        case "PRICE":
+            echo "Selling price is: ";
+            break;
+        
+    }
+}
+
+function stop($parser, $element_name)
+{
+
+    if($element_name == "TITLE" && isset($GLOBALS['currentAtt']))
+    {
+        echo " (Language is: <b>".$GLOBALS['currentAtt']['LANG']."</b>)";
+    }
+
+    echo "<br>";
+}
+
+function DataContent($parser, $data)
+{
+    echo $data;
+}
+
+xml_set_element_handler($parser, "start", "stop");
+
+xml_set_character_data_handler($parser, "DataContent");
+
+$fp = fopen("Books.xml","r");
+
+while($data = fread($fp, 8192))
+{
+    xml_parse($parser, $data, feof($fp));
+}
+
+xml_parser_free($parser);
 
 ?>
