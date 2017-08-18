@@ -1,11 +1,12 @@
 <?php
 
 // Register the Error handler first before it can be used
-function customError($errno,$errorstring)
+function customError($errno,$errstr)
 {
     echo "<b>Error:</b> Error No: [$errno]; Error String: $errstr<br>";
     echo "Ending Script";
-  //die();
+    echo "<br>";
+  //die(); 
 }
 
 set_error_handler("customError");
@@ -17,7 +18,7 @@ $myXMLData =
     <from>Jani</from>
     <heading>Reminder</heading>
     <body>Don't forget me this weekend!</body>
-</note"; // < missinga angle bracket 
+</note>"; // < missinga angle bracket 
 
 $xml=simplexml_load_string($myXMLData); //  <- this will report an error: 2            //or die("Error: Cannot create object");
 
@@ -25,6 +26,14 @@ print_r($xml);
 
 echo($test); // <- undefinded variable 
 
+
+$newXml = simplexml_load_file("books.xml");
+
+foreach($newXml->children() as $books)
+{
+    echo $books->title['lang'];
+    echo "<br>";
+}
 // nex test
 
 // this is a new test based on the GIT setup
