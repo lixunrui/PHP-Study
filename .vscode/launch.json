@@ -1,7 +1,12 @@
 {
     "version": "0.2.0",
-    "configurations": [
-
+    "configurations": [{
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome",
+            "url": "http://sample/phpSearch.html",
+            "webRoot": "${workspaceRoot}"
+        },
         {
             "name": "Listen for XDebug",
             "type": "php",
